@@ -14,7 +14,16 @@ Config.Notifications = 'qb' -- ox / qb
 
 Config.GymPed = "a_m_y_clubcust_04" --  Ped Model of the Ped you buy a membership
 Config.GymPedSpawn = vector4(-1255.53, -354.77, 35.96, 296.64) -- Location of the Ped you buy membership and Blip Location
-Config.BlipName = 'Gym' -- Blip Name
+Config.Blips = {
+    {
+		coords = vector3(-1263.12, -359.59, 36.99),
+		sprite = 311,
+		colour = 2,
+		scale = 0.7,
+		name = "Pump and Run Gym"
+	},
+}
+
 
 Config.GymPassPrice = 1250 --  Price of Membership
 Config.GymPassItem = 'gym_pass' -- Item Name of Gym Membership
