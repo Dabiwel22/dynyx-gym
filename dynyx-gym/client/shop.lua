@@ -1,16 +1,22 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 CreateThread(function()
-    -- Makes Blip
-    Gym = AddBlipForCoord(Config.GymPedSpawn)
-    SetBlipSprite(Gym, 311)
-    SetBlipDisplay(Gym, 4)
-    SetBlipScale(Gym, 0.65)
-    SetBlipAsShortRange(Gym, true)
-    SetBlipColour(Gym, 7)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName(Config.BlipName)
-    EndTextCommandSetBlipName(Gym)
+   -- Makes Blip Can be added and removed via config.lua
+  	if Config and Config.Blips then
+		for _, blipData in ipairs(Config.Blips) do
+			local blip = AddBlipForCoord(blipData.coords)
+			
+			SetBlipSprite(blip, blipData.sprite)
+			SetBlipColour(blip, blipData.colour)
+			SetBlipScale(blip, blipData.scale)
+			SetBlipAsShortRange(blip, true) -- only set true for short range
+			
+			
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString(blipData.text)
+			EndTextCommandSetBlipName(blip)
+		end
+	end
     -- Spawns Ped
     local PedCoords = Config.GymPedSpawn
     PedHash = GetHashKey(Config.GymPed)
